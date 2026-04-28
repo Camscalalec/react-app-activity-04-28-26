@@ -39,7 +39,7 @@ export default function Users() {
     // setFiltered(updated); // I remove this to remove the flinch anymation when refetching the new updated list
   };
 
-  const handleSelect = (id) => {
+  const handleSelect = (id: number) => {
     if (id == selectedId) {
       setSelectedId(null);
     } else {
@@ -53,7 +53,12 @@ export default function Users() {
       <input
         placeholder="Search user..."
         value={search}
-        onChange={handleSearch}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "6px",
+          marginBottom: "15px",
+        }} // use setSearch here directly instead of using handleSearch
       />
       {loading && <p>Loading...</p>}
 
