@@ -48,7 +48,7 @@ export default function Users() {
   };
 
   return (
-    <div>
+    <div style={{ width: "70%", margin: "0 auto" }}>
       <h2>Users ({users.length})</h2>
       <input
         placeholder="Search user..."
@@ -62,10 +62,26 @@ export default function Users() {
       />
       {loading && <p>Loading...</p>}
 
-      <ul>
-        {filtered.map((user, index) => (
-          <li key={index} onClick={() => handleSelect(user.id)}>
-            {user.name}
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {filtered.map(
+          (
+            user, //removed index since it's unnecessary here
+          ) => (
+            <li
+              key={user.id}
+              onClick={() => handleSelect(user.id)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "10px",
+                padding: "6px 10px",
+                border: "1px solid #ddd",
+                borderRadius: "6px",
+                cursor: "pointer",
+              }}
+            >
+              {user.name}
               <button
                 onClick={(e) => {
                   handleDelete(user.id); // pass the id of the name selected to delete
@@ -81,8 +97,9 @@ export default function Users() {
               >
                 x
               </button>
-          </li>
-        ))}
+            </li>
+          ),
+        )}
       </ul>
       {filtered.length === 0 && <p>No users found.</p>}
     </div>
