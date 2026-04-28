@@ -17,7 +17,7 @@ export default function Users() {
         setFiltered(data);
         setLoading(false);
       });
-  }, [users]);
+  }, []); // 1st, fixed rerendering of fetching, fetch once
 
   useEffect(() => {
     const result = users.filter((u) =>
