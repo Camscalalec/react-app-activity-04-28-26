@@ -66,7 +66,21 @@ export default function Users() {
         {filtered.map((user, index) => (
           <li key={index} onClick={() => handleSelect(user.id)}>
             {user.name}
-            <button onClick={handleDelete}>Delete</button>
+              <button
+                onClick={(e) => {
+                  handleDelete(user.id); // pass the id of the name selected to delete
+                }}
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  color: "red",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                }}
+              >
+                x
+              </button>
           </li>
         ))}
       </ul>
