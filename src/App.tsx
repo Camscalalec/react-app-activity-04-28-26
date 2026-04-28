@@ -24,7 +24,7 @@ export default function Users() {
       u.name.toLowerCase().includes(search.toLowerCase()),
     );
     setFiltered(result);
-  }, [search]);
+  }, [search, users]);
 
   const handleSearch = (e) => {
     setTimeout(() => {
