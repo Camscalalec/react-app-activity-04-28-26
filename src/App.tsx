@@ -26,18 +26,17 @@ export default function Users() {
     setFiltered(result);
   }, [search, users]);
 
-  const handleSearch = (e) => {
-    setTimeout(() => {
-      setSearch(e.target.value);
-    }, 300);
-  };
+  // const handleSearch = (e: any) => { //the timeout breaks the search
+  //   setTimeout(() => {
+  //     setSearch(e.target.value);
+  //   }, 300);
+  // };
 
-  const handleDelete = (id) => {
-    const updated = users;
-    const index = updated.findIndex((u) => u.id === id);
-    updated.splice(index, 1);
+  const handleDelete = (id: number) => {
+    const updated = users.filter((u) => u.id !== id);
+    // updated.splice(index, 1); // this mutates the array, reason why deletes last try only and just updating the list (BUG)
     setUsers(updated);
-    setFiltered(updated);
+    // setFiltered(updated); // I remove this to remove the flinch anymation when refetching the new updated list
   };
 
   const handleSelect = (id) => {
